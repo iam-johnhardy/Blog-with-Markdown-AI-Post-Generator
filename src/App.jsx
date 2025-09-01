@@ -12,7 +12,6 @@ import BlogPostEditor from "./Pages/Admin/Components/BlogPostEditor"
 import Comment from "./Pages/Admin/Components/Comment"
 
 
-
 const App = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
