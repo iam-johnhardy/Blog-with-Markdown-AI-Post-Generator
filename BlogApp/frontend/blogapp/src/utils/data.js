@@ -37,11 +37,7 @@ export const BLOG_NAVBAR_DATA = [
     },
     {
         id: "02",
-<<<<<<< HEAD
     Label:"React JS",
-=======
-    Label:"react JS",
->>>>>>> 89f78f1429643cf4561e343382f6a5e3465234e3
     icon:LuTag,
     Path:"/tag/React"
     },
@@ -52,6 +48,12 @@ export const BLOG_NAVBAR_DATA = [
     Path:"/tag/Next.js"
     },
 ]
+export default BLOG_NAVBAR_DATA
+
+
+
+
+
 
 // {SIDE_MENU_DATA.map(item => (
 //   <Link key={item.id} to={item.Path}>

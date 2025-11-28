@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
   import React, { createContext, useState, useEffect } from "react";
 // import axiosInstance from "../utils/axiosInstance";
@@ -88,16 +87,3 @@ export const UserProvider = ({ children }) => {
 };
 
 export default UserProvider;
-=======
-import React from "react";
-
-const userContext = () => {
-  return (
-    <div>
-      <h1>userContext</h1>
-      {/* Add logic to display blog posts or other content */}
-    </div>
-  );
-}
-export default userContext;
->>>>>>> 89f78f1429643cf4561e343382f6a5e3465234e3

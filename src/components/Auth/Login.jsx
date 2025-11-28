@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React,{ UseContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../Context/userContext";
@@ -48,6 +49,15 @@ const Login = () => {
 
 
 
+=======
+import React from "react";
+
+const Login = () => {
+  return (
+    <div>
+      <h1>Welcome to the login</h1>
+      {/* Add logic to display blog posts or other content */}
+>>>>>>> 89f78f1429643cf4561e343382f6a5e3465234e3
     </div>
   );
 }
