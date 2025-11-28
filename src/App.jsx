@@ -1,34 +1,21 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
-<<<<<<< HEAD
-import BlogPostView from "./Pages/Blog/BlogPostView.jsx";
-import PostByTags from "./Pages/Blog/PostByTags.jsx";
-import SearchPosts from "./Pages/Blog/SearchPosts.jsx";
-=======
 import BlogLandingPage from "./Pages/Blog/BloglandingPage";
 import BlogPostView from "./Pages/Blog/BlogPostView";
 import PostByTags from "./Pages/Blog/PostByTags";
 import SearchPosts from "./Pages/Blog/SearchPosts";
->>>>>>> 89f78f1429643cf4561e343382f6a5e3465234e3
 import AdminLogin from "./Pages/Admin/Components/AdminLogin";
 import PrivateRoute from "./routes/PrivateRoute";
 import Dashboard from "./Pages/Admin/Components/Dashboard";
 import BlogPosts from "./Pages/Admin/Components/BlogPosts"
 import BlogPostEditor from "./Pages/Admin/Components/BlogPostEditor"
 import Comment from "./Pages/Admin/Components/Comment"
-<<<<<<< HEAD
-import BlogLandingPage  from "./Pages/Blog/BlogLandingPage.jsx";
 import { UserProvider } from "./Context/userContext";
-=======
->>>>>>> 89f78f1429643cf4561e343382f6a5e3465234e3
 
 
 const App = () => {
   return (
-<<<<<<< HEAD
     <UserProvider>
-=======
->>>>>>> 89f78f1429643cf4561e343382f6a5e3465234e3
     <div className="bg-gray-100 min-h-screen">
       <Router>
         <Routes>
@@ -40,11 +27,7 @@ const App = () => {
 
           {/* Admin Routes */}
           <Route element={<PrivateRoute allowedRoles={("admin")} />}/>
-<<<<<<< HEAD
-          <Route path="/admin/dashboard" element={<Dashboard />} />
-=======
           <Route path="/amin/dashboard" element={<Dashboard />} />
->>>>>>> 89f78f1429643cf4561e343382f6a5e3465234e3
           <Route path="/admin/posts" element={<BlogPosts />} />
           <Route path="/admin/create" element={<BlogPostEditor />} />
           <Route path="/admin/edit/:postSlug"
@@ -65,10 +48,7 @@ const App = () => {
         }}
       />
     </div>
-<<<<<<< HEAD
     </UserProvider>
-=======
->>>>>>> 89f78f1429643cf4561e343382f6a5e3465234e3
   )
 
 }
