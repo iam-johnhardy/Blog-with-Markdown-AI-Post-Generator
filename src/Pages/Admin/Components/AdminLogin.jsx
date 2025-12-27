@@ -7,6 +7,7 @@ import SignUp from "../../../components/Auth/SignUp";
 const AdminLogin = () =>
      {
         const [currentpage, setCurrentpage] = useState("login");
+        
          return (
                <>
                 <div className="bg-white py-5 border-b border-gray-50">

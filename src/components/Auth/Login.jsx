@@ -1,23 +1,23 @@
-import React,{ UseContext, useState } from "react";
+import React,{ useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../Context/userContext";
-import { Input } from "../Inputs/input";
+import Input from "../Inputs/input"
+import axiosInstance from "../../utils/axiosInstance";
+import { API_PATHS } from "../../utils/apiPaths";
 
-const Login = () => {
+const Login = ({ setCurrentpage }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null)
 
-  // const { updateUser, setOpenAuthForm } = UseContext(UserContext);
+  const { updateUser, setOpenAuthForm } = useContext(UserContext);
   const navigate = useNavigate();
 
   // Handle login Form submit
   const handleLogin = async (e) => {
     e.preventDefault();
 
-  };
-
-  if (!validateEmail(email)) {
+    if (!validateEmail(email)) {
     setError("Please enter a valid email address.");
     return;
   }
@@ -29,19 +29,69 @@ const Login = () => {
 
   setError(null);
 
-  //
+  //Login API Call
+  try{
+    const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
+      email,
+      password,
+    }); 
+    const { token, user } = response.data;
+
+    if (token) {
+      localStorage.setItem("token", token);
+      updateUser(response.data);
+      
+      if (user?.role === "admin") {
+        setOpenAuthForm(false);
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/dashboard");
+      }
+    }
+  }catch (error){
+    if (error.response && error.response.data && error.response.data.message) {
+      setError(error.response.data.message);
+    } else {
+      setError("An error occurred during login. Please try again.");
+    }
+
+  }
+
+  };
+
+  // Email validation function
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   return (
     <div className="flex items-center">
-      <div className="w-[90vw] md-w[33vw] p-7 flex flex-col justify-center">
-        <h3 className="text-lg font-semibold text-black ">Welcome Back</h3>
+      <div className="w-[90vw] md:w-[33vw] p-7 flex flex-col justify-center">
+        <h3 className="text-lg font-semibold text-black">Welcome Back</h3>
         <p className="text-xs text-slate-700 mt-[2px] mb-6">Please enter your details to log in</p>
 
         <form onSubmit={handleLogin}>
+
+          
+          <Input
+          value = {email}
+          onChange = {({target}) => setEmail(target.value)}
+          label = "Email Address"
+          placeholder = "Johnhardy@example.com"
+          type = "text"
+          />
+
+          
+          <Input
+          value = {password}
+          onChange = {({target}) => setPassword(target.value)}
+          label = "Password"
+          placeholder = "Min 8 characters"
+          type = "Password"
+          />
           {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
 
-          <Input
-          value = {value}
-          />
 
           <button type="submit" className="btn-primary">
             Login
